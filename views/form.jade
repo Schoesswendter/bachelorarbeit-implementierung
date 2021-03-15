@@ -1,5 +1,30 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to Form
+  form(method="POST", action="/user")
+  input(type="hidden", name="_method", value="PUT")
+  label Geschlecht: *
+    input(type="text", name="name")
+  label Nachname: *
+    input(type="email", name="email")
+  label Vorname: *
+    input(type="number", name="age")
+  label Sozialversicherungsnummer: *
+    input(type="number", name="age")
+  label Geburtsdatum: *
+    input(type="number", name="age")
+  label E-Mail Adresse: *
+    input(type="number", name="age")
+  label Handynummer: *
+    input(type="number", name="age")
+  label Land: *
+    input(type="number", name="age")
+  label PLZ: *
+    input(type="number", name="age")
+  label Ort: *
+    input(type="number", name="age")
+  label Straße: *
+    input(type="number", name="age")
+  label Hausnummer: *
+    input(type="number", name="age")
+  input(type="submit")
