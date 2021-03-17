@@ -1,30 +1,34 @@
 extends layout
 
 block content
-  form(method="POST", action="/user")
-  input(type="hidden", name="_method", value="PUT")
-  label Geschlecht: *
-    input(type="text", name="name")
-  label Nachname: *
-    input(type="email", name="email")
-  label Vorname: *
-    input(type="number", name="age")
-  label Sozialversicherungsnummer: *
-    input(type="number", name="age")
-  label Geburtsdatum: *
-    input(type="number", name="age")
-  label E-Mail Adresse: *
-    input(type="number", name="age")
-  label Handynummer: *
-    input(type="number", name="age")
-  label Land: *
-    input(type="number", name="age")
-  label PLZ: *
-    input(type="number", name="age")
-  label Ort: *
-    input(type="number", name="age")
-  label Straße: *
-    input(type="number", name="age")
-  label Hausnummer: *
-    input(type="number", name="age")
-  input(type="submit")
+  h1 Vormerkung zur COVID-19 Schutzimpfung
+  h2 Persönliche Daten
+  form(method="POST", action="/user", class="form")
+    input(type="hidden", name="_method", value="PUT")
+    label Geschlecht: *
+      input(type="text", name="sex", placeholder="Auswählen...")
+    label Nachname: *
+      input(type="text", name="lastname", placeholder="Nachname...")
+    label Vorname: *
+      input(type="text", name="firstname", placeholder="Vorname...")
+    label Sozialversicherungsnummer: *
+      input(type="text", name="sozialnummer" placeholder="Ihre 10-stellige österreichische Sozialversicherungsnummer...")
+    label Geburtsdatum: *
+      input(type="date", name="age")
+    label E-Mail Adresse: *
+      input(type="email", name="email", placeholder="E-Mail Adresse...")
+    label Handynummer: *
+      input(type="text", name="number", placeholder="Handynummer...")
+    label Land: *
+      select(id="countries", name="countries")
+        - each country, i in countries
+          option(value="#{country}") #{country}
+    label PLZ: *
+      input(type="text", name="plz", placeholder="PLZ...")
+    label Ort: *
+      input(type="text", name="ort", placeholder="Ort")
+    label Straße: *
+      input(type="text", name="street", placeholder="Straße...")
+    label Hausnummer: *
+      input(type="text", name="housenumber", placeholder="Hausnummer...")
+    input(type="submit")
