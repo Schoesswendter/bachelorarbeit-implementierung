@@ -6,7 +6,13 @@ block content
   form(method="POST", action="/user", class="form")
     input(type="hidden", name="_method", value="PUT")
     label Geschlecht: *
-      input(type="text", name="sex", placeholder="Auswählen...")
+      select(id="countries", name="countries")
+        -sexs = ["Auswählen...", "Männlich", "Weiblich", "Divers"]
+        - each sex, i in sexs
+          - if (sex == "Auswählen...")
+            option(value="" disabled selected) Auswählen...
+          - else
+            option(value="#{sex}") #{sex}
     label Nachname: *
       input(type="text", name="lastname", placeholder="Nachname...")
     label Vorname: *
