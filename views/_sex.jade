@@ -1,0 +1,8 @@
+label Geschlecht: *
+  select(id="sex", name="sex", required)
+    -sexs = ["Auswählen...", "Männlich", "Weiblich", "Divers"]
+    - each sex, i in sexs
+      - if (sex == "Auswählen...")
+        option(value="" disabled selected) Auswählen...
+      - else
+        option(value="#{sex}") #{sex}

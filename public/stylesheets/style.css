@@ -61,6 +61,10 @@ input, select {
   font-family: 'Open Sans', sans-serif;
 }
 
+.form-animated input[type="submit"] {
+  display:none;
+}
+
 input[type="submit"] {
   grid-column: 1/3;
   margin: 0 50px;
@@ -81,4 +85,40 @@ input[type="submit"] {
   grid-template-columns: 50% 50%;
   max-width: 1440px;
   margin: 0 auto;
+}
+
+.form-animated {
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 150px;
+  max-width: 1440px;
+}
+
+.form-animated label {
+  text-align: left;
+  font-size: 24px;
+}
+
+.form-animated select, .form-animated input {
+  margin-top: 10px;
+}
+
+#next, #back {
+  background: #B70E0C;
+  border: none;
+  color: white;
+  text-transform: uppercase;
+  font-family: 'Poppins';
+  font-weight: bold;
+  font-size: 22px;
+  border-radius: 4px;
+  margin-left: 50px;
+  padding: 10px 20px;
+  margin-top: 100px;
+  cursor: pointer;
+}
+
+.navigation {
+  display: flex;
+  justify-content: center;
 }

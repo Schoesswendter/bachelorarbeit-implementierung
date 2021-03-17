@@ -3,7 +3,7 @@ extends layout
 block content
   h1 Vormerkung zur COVID-19 Schutzimpfung
   h2 Persönliche Daten
-  form(method="POST", action="/form", class="form")
+  form(method="GET", action="/", class="form")
     label Geschlecht: *
       select(id="sex", name="sex", required)
         -sexs = ["Auswählen...", "Männlich", "Weiblich", "Divers"]

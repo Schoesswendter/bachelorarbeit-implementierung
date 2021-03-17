@@ -6,6 +6,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var formRouter = require('./routes/form');
+var formAnimatedRouter = require('./routes/form-animated');
 var graphRouter = require('./routes/graph');
 
 var app = express();
@@ -22,6 +23,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/form', formRouter);
+app.use('/form-animated', formAnimatedRouter);
 app.use('/graph', graphRouter);
 
 app.set('title', 'Bachelorarbeit - Michaela Schoesswendter')
