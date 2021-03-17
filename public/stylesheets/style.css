@@ -20,6 +20,19 @@ h2 {
   color: #B70E0C;
 }
 
+h1.welcome, h2.welcome {
+  color: black;
+}
+
+h2.welcome {
+  margin-bottom: 100px;
+}
+
+div.welcome {
+  text-align: center;
+  width: 100%;
+}
+
 a {
   background-color: #081b37;
   color: white;

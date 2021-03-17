@@ -6,7 +6,7 @@ block content
   form(method="POST", action="/user", class="form")
     input(type="hidden", name="_method", value="PUT")
     label Geschlecht: *
-      select(id="countries", name="countries")
+      select(id="sex", name="sex")
         -sexs = ["Auswählen...", "Männlich", "Weiblich", "Divers"]
         - each sex, i in sexs
           - if (sex == "Auswählen...")
