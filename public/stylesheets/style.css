@@ -118,6 +118,10 @@ input[type="submit"] {
   cursor: pointer;
 }
 
+#next:hover, #back:hover, input[type="submit"]:hover {
+  background-color: #6b1408;
+}
+
 .navigation {
   display: flex;
   justify-content: center;
