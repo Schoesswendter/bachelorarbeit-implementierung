@@ -1,10 +1,11 @@
 var country = ""
 
-var select_countries = getElementByClass("country")
+var select_countries = document.getElementsByClassName("country")
 
-select_countries.forEach(element => {
-  element.addEventListener
-});
+console.log(select_countries)
+// select_countries.forEach(element => {
+//   element.addEventListener('click')
+// });
 
 var corona_data = {}
 
@@ -19,7 +20,7 @@ await fetch(`https://coronavirus-19-api.herokuapp.com/countries/${country}`)
 });
 
 console.log("All data", corona_data)
-console.log("cases", corona_data.cases)
+console.log("cases", corona_data["cases"])
 
 var ctx = document.getElementById('myChart');
 
