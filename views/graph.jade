@@ -2,5 +2,13 @@ extends layout
 
 block content
   h1= title
-  canvas(id="myChart" width="400" height="400")
+  div(class="wrapper--graph")
+    div(class="country--list")
+      p(class="country" name="World") Weltweit
+      p(class="country" name="Austria") Österreich
+      p(class="country" name="Germany") Deutschland
+      p(class="country" name="USA") USA
+      p(class="country" name="Russia") Russland
+      p(class="country" name="Netherlands") Niederlande
+    canvas(id="myChart" width="400" height="400")
 
