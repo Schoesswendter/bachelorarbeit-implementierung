@@ -127,6 +127,12 @@ input[type="submit"] {
   justify-content: center;
 }
 
-#myChart {
+#myChart, #myPieChart {
   max-height: 80vh;
+  max-width: 80vh;
+  margin: 0 auto;
+}
+
+#country--list {
+  position: absolute;
 }
