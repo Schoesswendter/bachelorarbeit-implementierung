@@ -4,7 +4,7 @@ block content
   h1= title
   h2 Fallzahlen
   div(class="wrapper--graph")
-    select(id="country--list")
+    select(id="noanimated--country--list")
       - english_name = [ 'Austria', 'Germany', 'Italy', 'Hungary']
       - german_name = [ 'Österreich', 'Deutschland', 'Italien', 'Ungarn']
       each item, i in english_name
@@ -16,11 +16,11 @@ block content
     //-   p(class="country" name="USA") USA
     //-   p(class="country" name="Russia") Russland
     //-   p(class="country" name="Netherlands") Niederlande
-    canvas(id="myChart" width="400" height="400")
-    select(id="country--list--pie")
+    canvas(id="coronaBarChart" width="400" height="400")
+    select(id="noanimated--country--list--pie")
       - english_name = [ 'Austria', 'Germany', 'Italy', 'Hungary']
       - german_name = [ 'Österreich', 'Deutschland', 'Italien', 'Ungarn']
       each item, i in english_name
         option(class="country" value=item) #{german_name[i]}
-    canvas(id="myPieChart")
+    canvas(id="coronaPieChart")
 

@@ -127,12 +127,13 @@ input[type="submit"] {
   justify-content: center;
 }
 
-#myChart, #myPieChart {
-  max-height: 80vh;
-  max-width: 80vh;
+#myChart, #myPieChart, #coronaBarChart, #coronaPieChart {
+  max-height: 90vh;
+  max-width: 90vh;
   margin: 0 auto;
+  margin-bottom: 20vh;
 }
 
-#country--list {
+#country--list, #country--list--pie, #noanimated--country--list--pie, #noanimated--country--list {
   position: absolute;
 }
