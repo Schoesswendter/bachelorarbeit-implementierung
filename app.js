@@ -8,6 +8,7 @@ var indexRouter = require('./routes/index');
 var formRouter = require('./routes/form');
 var formAnimatedRouter = require('./routes/form-animated');
 var graphRouter = require('./routes/graph');
+var graph2Router = require('./routes/graph-notanimated');
 
 var app = express();
 
@@ -25,6 +26,7 @@ app.use('/', indexRouter);
 app.use('/form', formRouter);
 app.use('/form-animated', formAnimatedRouter);
 app.use('/graph', graphRouter);
+app.use('/graph-notanimated', graph2Router);
 
 app.set('title', 'Bachelorarbeit - Michaela Schoesswendter')
 

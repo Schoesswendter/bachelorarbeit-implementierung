@@ -1,4 +1,24 @@
+//register custome positioner
+Chart.Tooltip.positioners.custom = function(elements, position) {
+  if (!elements.length) {
+    return false;
+  }
+  var offset = 0;
+  //adjust the offset left or right depending on the event position
+  if (elements[0]._chart.width / 2 > position.x) {
+    offset = 20;
+  } else {
+    offset = -20;
+  }
+  return {
+    x: position.x + offset,
+    y: position.y
+  }
+}
+
 var country = "Austria"
+
+Chart.defaults.global.tooltips.enabled = false;
 
 var select_countries = document.getElementsByClassName("country")
 
@@ -33,7 +53,33 @@ var myChart = new Chart(ctx, {
   options: {
     animation: {
       duration: 7000,
+      onProgress: function () {
+        const chartInstance = this.chart,
+          ctx = chartInstance.ctx;
+
+        ctx.font = Chart.helpers.fontString(
+          18,
+          Chart.defaults.global.defaultFontStyle,
+          Chart.defaults.global.defaultFontFamily
+        );
+        ctx.textAlign = "center";
+        ctx.textBaseline = "bottom";
+
+        this.data.datasets.forEach(function (dataset, i) {
+          const meta = chartInstance.controller.getDatasetMeta(i);
+          meta.data.forEach(function (bar, index) {
+            const data = dataset.data[index];
+            ctx.fillStyle = "#000";
+            ctx.fillText(data, bar._model.x, bar._model.y);
+          });
+        });
+      }
     },
+    tooltips: {
+      enabled: true,
+      position: 'custom'
+    },
+    hover: {mode: null},
     legend: {
       display: false
     },
@@ -98,7 +144,6 @@ document.getElementById("country--list--pie").addEventListener("change", functio
 
   updateData(myPieChart, selected, 'pie')
 })
-
 
 async function updateData(chart, selected, chart_type = 'bar') {
   let new_data = {}
