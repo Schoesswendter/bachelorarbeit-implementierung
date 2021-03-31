@@ -8,6 +8,7 @@
     "build": "browserify client/main.js -o public/app.js"
   },
   "dependencies": {
+    "browserify": "^17.0.0",
     "chart.js": "^2.9.4",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
@@ -17,5 +18,6 @@
     "jade": "~1.11.0",
     "morgan": "~1.9.1",
     "unirest": "^0.6.0"
-  }
+  },
+  "devDependencies": {}
 }
