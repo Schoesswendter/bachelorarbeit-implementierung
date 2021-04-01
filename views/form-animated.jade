@@ -3,7 +3,17 @@ extends layout
 block content
   h1 Vormerkung zur COVID-19 Schutzimpfung
   h2 Persönliche Daten
-   form(method="GET", action="/", class="form")
+  ul(class="items")
+    li(class="active") 1
+    li 2 
+    li 3
+    li 4
+    li 5
+    li 6
+    li 7
+    li 8
+    li 9
+  form(method="GET", action="/", class="form-animated")
     include _sex
     include _lastname
     include _firstname

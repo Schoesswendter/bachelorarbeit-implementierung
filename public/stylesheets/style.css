@@ -87,11 +87,25 @@ input[type="submit"] {
   margin: 0 auto;
 }
 
+
+
+#myChart, #myPieChart, #coronaBarChart, #coronaPieChart {
+  max-height: 90vh;
+  max-width: 90vh;
+  margin: 0 auto;
+  margin-bottom: 20vh;
+}
+
+#country--list, #country--list--pie, #noanimated--country--list--pie, #noanimated--country--list {
+  position: absolute;
+}
+
+/* FORMULAR ANIMATED */
 .form-animated {
   text-align: center;
   margin: 0 auto;
   margin-top: 150px;
-  max-width: 1440px;
+  max-width: 800px;
 }
 
 .form-animated label {
@@ -127,13 +141,45 @@ input[type="submit"] {
   justify-content: center;
 }
 
-#myChart, #myPieChart, #coronaBarChart, #coronaPieChart {
-  max-height: 90vh;
-  max-width: 90vh;
-  margin: 0 auto;
-  margin-bottom: 20vh;
+ul.items li {
+  list-style: none;
+  background: gray;
+  width: 30px;
+  height: 30px;
+  color: white;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-#country--list, #country--list--pie, #noanimated--country--list--pie, #noanimated--country--list {
-  position: absolute;
+ul.items li.active {
+  background: #B70E0C;
+}
+
+ul.items {
+  display: flex;
+  justify-content: space-around;
+}
+
+body.error .enabled input, body.error .enabled select{
+  animation-name: error;
+  animation-duration: 500ms;
+  animation-timing-function: ease-in-out;
+  box-shadow: 0px 0px 1px 2px #B70E0C;
+  border: none;
+}
+
+@keyframes enable {
+  0% {opacity: 0; transform: scale(0.2);}
+  60% {transform: scale(1.1);}
+  100% {transform: scale(1);}
+}
+
+@keyframes error {
+  0%, 50%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {transform: rotate(-1deg);}
+  75% {transform: rotate(1deg);}
 }
