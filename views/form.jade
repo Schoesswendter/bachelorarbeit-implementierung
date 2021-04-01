@@ -4,36 +4,16 @@ block content
   h1 Vormerkung zur COVID-19 Schutzimpfung
   h2 Persönliche Daten
   form(method="GET", action="/", class="form")
-    label Geschlecht: *
-      select(id="sex", name="sex", required)
-        -sexs = ["Auswählen...", "Männlich", "Weiblich", "Divers"]
-        - each sex, i in sexs
-          - if (sex == "Auswählen...")
-            option(value="" disabled selected) Auswählen...
-          - else
-            option(value="#{sex}") #{sex}
-    label Nachname: *
-      input(type="text", name="lastname", placeholder="Nachname...", required)
-    label Vorname: *
-      input(type="text", name="firstname", placeholder="Vorname...", required)
-    label Sozialversicherungsnummer: *
-      input(type="text", name="sozialnummer" placeholder="10-stellige österr. Sozialversicherungsnummer...", required)
-    label Geburtsdatum: *
-      input(type="date", name="age", required)
-    label E-Mail Adresse: *
-      input(type="email", name="email", placeholder="E-Mail Adresse...", required)
-    label Handynummer: *
-      input(type="text", name="number", placeholder="Handynummer...", required)
+    include _sex
+    include _lastname
+    include _firstname
+    include _socialnumber
+    include _birthday
+    include _email
+    include _phone
     label Land: *
       select(id="countries", name="countries", required)
         - each country, i in countries
           option(value="#{country}") #{country}
-    label PLZ: *
-      input(type="text", name="plz", placeholder="PLZ...", required)
-    label Ort: *
-      input(type="text", name="ort", placeholder="Ort", required)
-    label Straße: *
-      input(type="text", name="street", placeholder="Straße...", required)
-    label Hausnummer: *
-      input(type="text", name="housenumber", placeholder="Hausnummer...", required)
+    include _home
     input(type="submit")

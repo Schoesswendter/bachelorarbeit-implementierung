@@ -3,8 +3,19 @@ extends layout
 block content
   h1 Vormerkung zur COVID-19 Schutzimpfung
   h2 Persönliche Daten
-  form(method="GET", action="/form/", class="form-animated")
+   form(method="GET", action="/", class="form")
     include _sex
+    include _lastname
+    include _firstname
+    include _socialnumber
+    include _birthday
+    include _email
+    include _phone
+    label Land: *
+      select(id="countries", name="countries", required)
+        - each country, i in countries
+          option(value="#{country}") #{country}
+    include _home
     div(class="navigation")
       p(id="back") Zurück
       p(id="next") Weiter
