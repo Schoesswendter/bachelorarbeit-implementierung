@@ -21,7 +21,8 @@ block content
     include _birthday
     include _email
     include _phone
-    label Land: *
+    fieldset 
+      label(for="countries") Land: *
       select(id="countries", name="countries", required)
         - each country, i in countries
           option(value="#{country}") #{country}

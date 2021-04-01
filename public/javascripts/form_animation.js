@@ -7,7 +7,7 @@ function next(target) {
   } else {
     body.classList.remove('error');
     
-    var enable = document.querySelector('form fieldset.enable'),
+    var enable = document.querySelector('form label.enable'),
         nextEnable = enable.nextElementSibling;
     enable.classList.remove('enable');
     enable.classList.add('disable');
@@ -30,7 +30,7 @@ function keyDown(event) {
 
 var body = document.querySelector('body'),
     form = document.querySelector('form'),
-    count = form.querySelectorAll('fieldset').length;
+    count = form.querySelectorAll('label').length;
 
 document.body.onmouseup = function (event) {
     var target = event.target || event.toElement;

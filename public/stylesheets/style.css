@@ -104,13 +104,32 @@ input[type="submit"] {
 .form-animated {
   text-align: center;
   margin: 0 auto;
-  margin-top: 150px;
+  margin-top: 50px;
   max-width: 800px;
+  position: relative
 }
 
-.form-animated label {
+.form-animated fieldset {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 50px;
   text-align: left;
   font-size: 24px;
+  opacity: 0;
+  transform: scale(0.2);
+  transition: all 0.4s ease-in-out;
+  position: absolute;
+  width: 100%;
+  margin: 0;
+  border: none;
+}
+
+.form-animated fieldset.enabled {
+  z-index: 1;
+  opacity: 1;
+  transition: all 0.5s ease-out 0.2s;
+  transform: scale(1);
+  animation: enable 0.5s ease-out 0.2s;
 }
 
 .form-animated select, .form-animated input {
@@ -128,7 +147,7 @@ input[type="submit"] {
   border-radius: 4px;
   margin-left: 50px;
   padding: 10px 20px;
-  margin-top: 100px;
+  margin-top: 200px;
   cursor: pointer;
 }
 
@@ -160,6 +179,8 @@ ul.items li.active {
 ul.items {
   display: flex;
   justify-content: space-around;
+  padding: 0;
+  margin-top: 50px;
 }
 
 body.error .enabled input, body.error .enabled select{

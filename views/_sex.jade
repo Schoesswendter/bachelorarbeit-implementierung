@@ -1,4 +1,5 @@
-label(class="enabled") Geschlecht: *
+fieldset(class="enabled") 
+  label(for="sex") Geschlecht: *
   select(id="sex", name="sex", required)
     -sexs = ["Auswählen...", "Männlich", "Weiblich", "Divers"]
     - each sex, i in sexs
