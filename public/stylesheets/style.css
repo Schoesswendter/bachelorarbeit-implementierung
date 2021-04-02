@@ -109,6 +109,10 @@ input[type="submit"] {
   position: relative
 }
 
+.form-animated label {
+  margin: 0;
+}
+
 .form-animated fieldset {
   display: flex;
   flex-direction: column;
@@ -134,30 +138,6 @@ input[type="submit"] {
 
 .form-animated select, .form-animated input {
   margin-top: 10px;
-}
-
-#next, #back {
-  background: #B70E0C;
-  border: none;
-  color: white;
-  text-transform: uppercase;
-  font-family: 'Poppins';
-  font-weight: bold;
-  font-size: 22px;
-  border-radius: 4px;
-  margin-left: 50px;
-  padding: 10px 20px;
-  margin-top: 200px;
-  cursor: pointer;
-}
-
-#next:hover, #back:hover, input[type="submit"]:hover {
-  background-color: #6b1408;
-}
-
-.navigation {
-  display: flex;
-  justify-content: center;
 }
 
 ul.items li {
@@ -191,6 +171,8 @@ body.error .enabled input, body.error .enabled select{
   border: none;
 }
 
+/* ANIMATION */
+
 @keyframes enable {
   0% {opacity: 0; transform: scale(0.2);}
   60% {transform: scale(1.1);}
@@ -204,3 +186,39 @@ body.error .enabled input, body.error .enabled select{
   25% {transform: rotate(-1deg);}
   75% {transform: rotate(1deg);}
 }
+
+/* NAVIGATION BUTTONS */
+
+.next, .back {
+  background: #B70E0C;
+  border: none;
+  color: white;
+  text-transform: uppercase;
+  font-family: 'Poppins';
+  font-weight: bold;
+  font-size: 22px;
+  border-radius: 4px;
+  margin-left: 50px;
+  padding: 10px 20px;
+  margin-top: 100px;
+  cursor: pointer;
+}
+
+.next:hover, .back:hover, input[type="submit"]:hover {
+  background-color: #6b1408;
+}
+
+.navigation {
+  display: flex;
+  justify-content: center;
+}
+
+.button__wrapper {
+  background: #B70E0C;
+  height: 40px;
+  width: 40px;
+  position: relative;
+  border: none;
+  cursor: pointer;
+}
+

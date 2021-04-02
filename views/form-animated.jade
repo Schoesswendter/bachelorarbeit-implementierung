@@ -13,7 +13,7 @@ block content
     li 7
     li 8
     li 9
-  form(method="GET", action="/", class="form-animated")
+  form(method="GET", action="/form", class="form-animated")
     include _sex
     include _lastname
     include _firstname
@@ -26,8 +26,8 @@ block content
       select(id="countries", name="countries", required)
         - each country, i in countries
           option(value="#{country}") #{country}
+      div(class="navigation")
+        button(class="back") Zurück 
+        button(class="next") Weiter     
     include _home
-    div(class="navigation")
-      p(id="back") Zurück
-      p(id="next") Weiter
     input(type="submit")
