@@ -152,7 +152,7 @@ ul.items li {
   justify-content: center;
 }
 
-ul.items li.active {
+ul.items li.active, ul.items li.filled {
   background: #B70E0C;
 }
 

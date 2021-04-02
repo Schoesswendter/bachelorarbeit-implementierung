@@ -17,8 +17,21 @@ function next(target) {
     var active = document.querySelector('ul.items li.active'),
       nextActive = active.nextElementSibling;
     active.classList.remove('active');
+    active.classList.add('filled');
     nextActive.classList.add('active');
   }
+}
+
+function back(target) {
+  // get previous field
+  var enable = document.querySelector('fieldset.enabled'),
+    lastEnable = enable.previousElementSibling;
+  enable.classList.remove('enabled');
+  lastEnable.classList.add('enabled');
+
+  // remove active class on left list
+  var active = document.querySelector('ul.items li.active');
+  active.classList.remove('active');
 }
 
 function keyDown(event) {
@@ -31,11 +44,12 @@ function keyDown(event) {
 window.onload = function () {
   var body = document.querySelector('body'),
     form = document.querySelector('form'),
-  count = form.querySelectorAll('fieldset').length;
+    count = form.querySelectorAll('fieldset').length;
 
   document.body.onmouseup = function (event) {
     var target = event.target || event.toElement;
     if (target.classList.contains("next")) next(target);
+    if (target.classList.contains("back")) back(target);
   };
   document.addEventListener("keydown", keyDown, false);
 }
