@@ -32,6 +32,7 @@ function back(target) {
   // remove active class on left list
   var active = document.querySelector('ul.items li.active');
   active.classList.remove('active');
+  active.previousElementSibling.classList.add('active');
 }
 
 function keyDown(event) {
