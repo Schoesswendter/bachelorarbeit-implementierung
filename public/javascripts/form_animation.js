@@ -45,13 +45,15 @@ function keyDown(event) {
 
 window.onload = function () {
   var body = document.querySelector('body'),
-    form = document.querySelector('form'),
-    count = form.querySelectorAll('fieldset').length;
+    form = document.querySelector('form');
+  if(form != null) {
+    var count = form.querySelectorAll('fieldset').length;
 
-  document.body.onmouseup = function (event) {
-    var target = event.target || event.toElement;
-    if (target.classList.contains("next")) next(target);
-    if (target.classList.contains("back")) back(target);
-  };
-  document.addEventListener("keydown", keyDown, false);
+    document.body.onmouseup = function (event) {
+      var target = event.target || event.toElement;
+      if (target.classList.contains("next")) next(target);
+      if (target.classList.contains("back")) back(target);
+    };
+    document.addEventListener("keydown", keyDown, false);
+  }
 }
