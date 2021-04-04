@@ -33,6 +33,7 @@ function back(target) {
   var active = document.querySelector('ul.items li.active');
   active.classList.remove('active');
   active.previousElementSibling.classList.add('active');
+  document.querySelector('body').classList.remove('error');
 }
 
 function keyDown(event) {
