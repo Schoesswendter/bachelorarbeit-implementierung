@@ -160,6 +160,8 @@ ul.items {
   display: flex;
   justify-content: space-around;
   padding: 0;
+  max-width: 1440px;
+  margin: 0 auto;
   margin-top: 50px;
 }
 

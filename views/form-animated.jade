@@ -13,6 +13,9 @@ block content
     li 7
     li 8
     li 9
+    li 10
+    li 11
+    li 12
   form(method="GET", action="/form", class="form-animated")
     include _sex
     include _lastname
@@ -27,7 +30,7 @@ block content
         - each country, i in countries
           option(value="#{country}") #{country}
       div(class="navigation")
-        button(class="back") Zurück 
-        button(class="next") Weiter     
+        button(class="back" type="button") Zurück 
+        button(class="next" type="button") Weiter     
     include _home
     input(type="submit")
