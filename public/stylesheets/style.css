@@ -189,6 +189,15 @@ body.error .enabled input, body.error .enabled select{
   75% {transform: rotate(1deg);}
 }
 
+@keyframes show {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 /* NAVIGATION BUTTONS */
 
 .next, .back {
@@ -224,3 +233,15 @@ body.error .enabled input, body.error .enabled select{
   cursor: pointer;
 }
 
+/* ERROR MESSAGE */
+
+.validationmsg {
+  position: absolute;
+  background: white;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  text-align: center;
+  top: 100px;
+  animation: show 0.5s ease;
+}

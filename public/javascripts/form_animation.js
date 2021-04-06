@@ -4,8 +4,20 @@ function next(target) {
   // Check if input is empty
   if (!input.checkValidity() || (input.nodeName == "select" && input.value == "")) {
     document.querySelector('body').classList.add('error');
+    console.log(input.validationMessage)
+    var tag = document.createElement("p");
+    tag.classList.add("validationmsg")
+    var text = document.createTextNode(input.validationMessage);
+    tag.appendChild(text);
+    target.closest('.enabled').appendChild(tag)
   } else {
     document.querySelector('body').classList.remove('error');
+
+    let allerrors = document.querySelectorAll(".validationmsg")
+
+    allerrors.forEach(element => {
+      element.remove()
+    });
 
     var enable = document.querySelector('fieldset.enabled'),
       nextEnable = enable.nextElementSibling;
