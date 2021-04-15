@@ -237,5 +237,8 @@ body.error .form-animated .enabled input, body.error .form-animated .enabled sel
   width: 100%;
   text-align: center;
   top: 100px;
+}
+
+.form-animated .validationmsg {
   animation: show 0.5s ease;
 }
