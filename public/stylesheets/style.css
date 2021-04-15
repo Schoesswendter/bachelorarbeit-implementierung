@@ -48,11 +48,18 @@ a {
   border-radius: 7px;
 }
 
-label {
-  display: flex;
-  flex-direction: column;
-  margin: 20px 50px;
+#myChart, #myPieChart, #coronaBarChart, #coronaPieChart {
+  max-height: 90vh;
+  max-width: 90vh;
+  margin: 0 auto;
+  margin-bottom: 20vh;
 }
+
+#country--list, #country--list--pie, #noanimated--country--list--pie, #noanimated--country--list {
+  position: absolute;
+}
+
+/* FORMULAR */
 
 input, select {
   min-height: 40px;
@@ -61,7 +68,7 @@ input, select {
   font-family: 'Open Sans', sans-serif;
 }
 
-.form-animated input[type="submit"] {
+.form-animated input[type="submit"], .form input[type="submit"] {
   display:none;
 }
 
@@ -80,28 +87,7 @@ input[type="submit"] {
   padding: 15px;
 }
 
-.form {
-  display: grid;
-  grid-template-columns: 50% 50%;
-  max-width: 1440px;
-  margin: 0 auto;
-}
-
-
-
-#myChart, #myPieChart, #coronaBarChart, #coronaPieChart {
-  max-height: 90vh;
-  max-width: 90vh;
-  margin: 0 auto;
-  margin-bottom: 20vh;
-}
-
-#country--list, #country--list--pie, #noanimated--country--list--pie, #noanimated--country--list {
-  position: absolute;
-}
-
-/* FORMULAR ANIMATED */
-.form-animated {
+.form-animated, .form {
   text-align: center;
   margin: 0 auto;
   margin-top: 50px;
@@ -113,19 +99,22 @@ input[type="submit"] {
   margin: 0;
 }
 
-.form-animated fieldset {
+.form-animated fieldset, .form fieldset {
   display: flex;
   flex-direction: column;
   margin: 20px 50px;
   text-align: left;
   font-size: 24px;
   opacity: 0;
-  transform: scale(0.2);
-  transition: all 0.4s ease-in-out;
   position: absolute;
   width: 100%;
   margin: 0;
   border: none;
+}
+
+.form-animated fieldset {
+  transform: scale(0.2);
+  transition: all 0.4s ease-in-out;
 }
 
 .form-animated fieldset.enabled {
@@ -136,7 +125,12 @@ input[type="submit"] {
   animation: enable 0.5s ease-out 0.2s;
 }
 
-.form-animated select, .form-animated input {
+.form fieldset.enabled {
+  z-index: 1;
+  opacity: 1;
+}
+
+.form-animated select, .form-animated input, .form select, .form input {
   margin-top: 10px;
 }
 
@@ -165,7 +159,7 @@ ul.items {
   margin-top: 50px;
 }
 
-body.error .enabled input, body.error .enabled select{
+body.error .form-animated .enabled input, body.error .form-animated .enabled select{
   animation-name: error;
   animation-duration: 500ms;
   animation-timing-function: ease-in-out;
