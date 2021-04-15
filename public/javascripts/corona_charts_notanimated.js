@@ -16,10 +16,15 @@ await fetch(`https://coronavirus-19-api.herokuapp.com/countries/${country}`)
 // NOT ANIMATED
 var ctx_bar_no = document.getElementById('coronaBarChart');
 
+let cases = numberWithCommas(corona_data["cases"]);
+let active = numberWithCommas(corona_data["active"]);
+let deaths = numberWithCommas(corona_data["deaths"]);
+let recovered = numberWithCommas(corona_data["recovered"]);
+
 var coronaBarChart = new Chart(ctx_bar_no, {
     type: 'bar',
     data: {
-        labels: ['Fälle', 'Aktive Fälle', 'Tode durch Corona', 'Geheilte Fälle'],
+        labels: [[cases, ' Fälle'], [active, ' Aktive Fälle'], [deaths, ' Todesfälle'], [recovered, ' Geheilte Fälle']],
         datasets: [{
             label: 'Personen',
             data: [corona_data["cases"], corona_data["active"], corona_data["deaths"], corona_data["recovered"]],
@@ -32,6 +37,7 @@ var coronaBarChart = new Chart(ctx_bar_no, {
         }]
     },
     options: {
+        scaleLabel: function (label) { return '$' + label.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); },
         legend: {
             display: false
         },
@@ -39,28 +45,7 @@ var coronaBarChart = new Chart(ctx_bar_no, {
             animationDuration: 0
         },
         animation: {
-            duration: 0,
-            onComplete: function () {
-                const chartInstance = this.chart,
-                    ctx = chartInstance.ctx;
-
-                ctx.font = Chart.helpers.fontString(
-                    18,
-                    Chart.defaults.global.defaultFontStyle,
-                    Chart.defaults.global.defaultFontFamily
-                );
-                ctx.textAlign = "center";
-                ctx.textBaseline = "bottom";
-
-                this.data.datasets.forEach(function (dataset, i) {
-                    const meta = chartInstance.controller.getDatasetMeta(i);
-                    meta.data.forEach(function (bar, index) {
-                        const data = dataset.data[index];
-                        ctx.fillStyle = "#000";
-                        ctx.fillText(data, bar._model.x, bar._model.y - 2);
-                    });
-                });
-            }
+            duration: 0
         },
         tooltips: {
             enabled: false
@@ -69,10 +54,13 @@ var coronaBarChart = new Chart(ctx_bar_no, {
             yAxes: [{
                 ticks: {
                     beginAtZero: true,
-                    max: 4000000,
+                    // max: 4000000,
                     fontSize: 16,
                     fontColor: 'black',
-                    stepSize: 1000000
+                    callback: function (value, index, values) {
+                        return numberWithCommas(value);
+                    }
+                    // stepSize: 1000000
                 }
             }],
             xAxes: [{
@@ -96,14 +84,14 @@ var ctx_pie_no = document.getElementById('coronaPieChart');
 var myPieChart_no = new Chart(ctx_pie_no, {
     type: 'pie',
     data: {
-        labels: ['Aktive Fälle', 'Tode durch Corona', 'Geheilte Fälle'],
+        labels: [[recovered + ' Geheilte Fälle'], [active + ' Aktive Fälle'], [deaths + ' Todesfälle']],
         datasets: [{
             label: 'Personen',
-            data: [corona_data["active"], corona_data["deaths"], corona_data["recovered"]],
+            data: [corona_data["recovered"], corona_data["active"], corona_data["deaths"]],
             backgroundColor: [
+                'rgba(75, 192, 192, 0.9)',
                 'rgba(255, 206, 86, 0.9)',
-                'rgba(255, 99, 132, 0.9)',
-                'rgba(75, 192, 192, 0.9)'
+                'rgba(255, 99, 132, 0.9)'
             ]
         }]
     },
@@ -145,12 +133,25 @@ async function updateData(chart, selected, chart_type = 'bar') {
         chart.data.datasets[0].data[1] = new_data["active"]
         chart.data.datasets[0].data[2] = new_data["deaths"]
         chart.data.datasets[0].data[3] = new_data["recovered"]
+
+        chart.data.labels[0] = [cases, ' Fälle']
+        chart.data.labels[1] = [active, ' Aktive Fälle']
+        chart.data.labels[2] = [deaths, ' Todesfälle']
+        chart.data.labels[3] = [recovered, ' Geheilte Fälle']
     }
     else {
-        chart.data.datasets[0].data[0] = new_data["active"]
-        chart.data.datasets[0].data[1] = new_data["deaths"]
-        chart.data.datasets[0].data[2] = new_data["recovered"]
+        chart.data.datasets[0].data[0] = new_data["recovered"]
+        chart.data.datasets[0].data[1] = new_data["active"]
+        chart.data.datasets[0].data[2] = new_data["deaths"]
+
+        chart.data.labels[0] = [recovered + ' Geheilte Fälle']
+        chart.data.labels[1] = [active + ' Aktive Fälle']
+        chart.data.labels[2] = [deaths + ' Todesfälle']
     }
 
     chart.update();
+}
+
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }
