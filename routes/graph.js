@@ -4,7 +4,7 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.render('graph', { title: 'Coronadaten - Österreich' });
+  res.render('graph', { title: 'Coronadaten' });
 });
 
 module.exports = router;
