@@ -9,13 +9,6 @@ block content
       - german_name = [ 'Österreich', 'Deutschland', 'Italien', 'Ungarn']
       each item, i in english_name
         option(class="country" value=item) #{german_name[i]}
-    //- div(class="country--list")
-    //-   p(class="country" name="World") Weltweit
-    //-   p(class="country" name="Austria") Österreich
-    //-   p(class="country" name="Germany") Deutschland
-    //-   p(class="country" name="USA") USA
-    //-   p(class="country" name="Russia") Russland
-    //-   p(class="country" name="Netherlands") Niederlande
     canvas(id="myChart" width="400" height="400")
     svg(class="scroll--down animate")
       path(class="a1" d="M0 0 L30 32 L60 0")
@@ -27,4 +20,9 @@ block content
       each item, i in english_name
         option(class="country" value=item) #{german_name[i]}
     canvas(id="myPieChart")
+    svg(class="scroll--down animate")
+      path(class="a1" d="M0 0 L30 32 L60 0")
+      path(class="a2" d="M0 20 L30 52 L60 20")
+      path(class="a3" d="M0 40 L30 72 L60 40")
+    canvas(id="myStackedChart")
 
