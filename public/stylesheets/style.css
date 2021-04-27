@@ -86,7 +86,9 @@ a {
 #myChart,
 #myPieChart,
 #coronaBarChart,
-#coronaPieChart {
+#coronaPieChart,
+#myStackedChart,
+#coronaStackedChart {
     max-height: 60vh;
     max-width: 50%;
     position: absolute;
@@ -96,7 +98,9 @@ a {
 }
 
 #myPieChart,
-#coronaPieChart {
+#coronaPieChart,
+#myStackedChart,
+#coronaStackedChart {
     max-width: 70%;
 }
 
@@ -107,6 +111,13 @@ a {
     position: absolute;
     top: 25%;
     left: 50px;
+}
+
+.back_to_index {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    bottom: 50px;
 }
 
 
