@@ -23,12 +23,42 @@ Chart.defaults.global.tooltips.enabled = false;
 var select_countries = document.getElementsByClassName("country")
 
 var corona_data = {}
+var corona_data_italy = {}
+var corona_data_hungary = {}
+var corona_data_germany = {}
 
 await fetch(`https://coronavirus-19-api.herokuapp.com/countries/${country}`)
     .then((resp) => resp.json())
     .then(function(data) {
         corona_data = data
-        console.log("THE DATA", data)
+        console.log(data)
+    })
+    .catch(function(error) {
+        console.log(error);
+    });
+
+await fetch(`https://coronavirus-19-api.herokuapp.com/countries/Germany`)
+    .then((resp) => resp.json())
+    .then(function(data) {
+        corona_data_germany = data
+    })
+    .catch(function(error) {
+        console.log(error);
+    });
+
+await fetch(`https://coronavirus-19-api.herokuapp.com/countries/Hungary`)
+    .then((resp) => resp.json())
+    .then(function(data) {
+        corona_data_hungary = data
+    })
+    .catch(function(error) {
+        console.log(error);
+    });
+
+await fetch(`https://coronavirus-19-api.herokuapp.com/countries/Italy`)
+    .then((resp) => resp.json())
+    .then(function(data) {
+        corona_data_italy = data
     })
     .catch(function(error) {
         console.log(error);
@@ -168,6 +198,75 @@ document.getElementById("country--list--pie").addEventListener("change", functio
 
     updateData(myPieChart, selected, 'pie')
 })
+
+// STACKED BAR CHART
+
+var ctx_stacked = document.getElementById('myStackedChart');
+
+console.log("DATA AUSTRIA: ", corona_data);
+console.log("DATA GERMANY: ", corona_data_germany);
+console.log("DATA ITALY: ", corona_data_italy);
+console.log("DATA HUNGARY: ", corona_data_hungary);
+
+var myStackedChart = new Chart(ctx_stacked, {
+    type: 'bar',
+    data: {
+        labels: [
+            [numberWithCommas(corona_data["casesPerOneMillion"]) + ' Fälle Österreich'],
+            [numberWithCommas(corona_data_germany["casesPerOneMillion"]) + ' Fälle Deutschland'],
+            [numberWithCommas(corona_data_italy["casesPerOneMillion"]) + ' Fälle Italien'],
+            [numberWithCommas(corona_data_hungary["casesPerOneMillion"]) + ' Fälle Ungarn']
+        ],
+        datasets: [{
+                type: 'bar',
+                label: 'Fälle pro 1 Millionen',
+                data: [corona_data["casesPerOneMillion"], corona_data_germany["casesPerOneMillion"], corona_data_italy["casesPerOneMillion"], corona_data_hungary["casesPerOneMillion"]],
+                backgroundColor: 'rgba(54, 162, 235, 0.9)'
+            },
+            // {
+            //   type: 'line',
+            //   label: 'Tests pro 1 Millionen',
+            //   data: [corona_data["testsPerOneMillion"], corona_data_germany["testsPerOneMillion"], corona_data_italy["testsPerOneMillion"], corona_data_hungary["testsPerOneMillion"]],
+            //   borderColor: 'black',
+            //   fill: false
+            // }
+        ]
+    },
+    options: {
+        tooltips: {
+            enabled: true
+        },
+        scales: {
+            xAxes: [{
+                stacked: true,
+                ticks: {
+                    fontSize: 16,
+                    fontColor: 'black'
+                }
+            }],
+            yAxes: [{
+                stacked: true,
+                ticks: {
+                    beginAtZero: true,
+                    // max: 4000000,
+                    fontSize: 16,
+                    fontColor: 'black',
+                    callback: function(value, index, values) {
+                            return numberWithCommas(value);
+                        }
+                        // stepSize: 1000000
+                }
+            }]
+        },
+        legend: {
+            display: true,
+            labels: {
+                fontColor: 'black',
+                fontSize: 18
+            }
+        }
+    }
+});
 
 async function updateData(chart, selected, chart_type = 'bar') {
     let new_data = {}
