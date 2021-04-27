@@ -59,14 +59,45 @@ a {
     min-height: 200vh;
 }
 
+.wrapper--inner {
+    height: 100vh;
+    width: calc(100vw - 116px);
+    position: absolute;
+    top: 0;
+    left: 58px;
+}
+
+.wrapper--inner2 {
+    height: 100vh;
+    width: calc(100vw - 116px);
+    position: absolute;
+    top: 100vh;
+    left: 58px;
+}
+
+.wrapper--inner3 {
+    height: 100vh;
+    width: calc(100vw - 116px);
+    position: absolute;
+    top: 200vh;
+    left: 58px;
+}
+
 #myChart,
 #myPieChart,
 #coronaBarChart,
 #coronaPieChart {
     max-height: 60vh;
     max-width: 50%;
-    margin: 0 auto;
-    margin-bottom: 50vh;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#myPieChart,
+#coronaPieChart {
+    max-width: 70%;
 }
 
 #country--list,
@@ -74,6 +105,8 @@ a {
 #noanimated--country--list--pie,
 #noanimated--country--list {
     position: absolute;
+    top: 25%;
+    left: 50px;
 }
 
 
@@ -349,6 +382,7 @@ input[type="submit"]:hover {
     position: absolute;
     left: calc(50% - 30px);
     bottom: 20px;
+    cursor: pointer;
 }
 
 .scroll--down path {
