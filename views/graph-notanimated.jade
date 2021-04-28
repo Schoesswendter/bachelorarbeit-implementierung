@@ -4,27 +4,36 @@ block content
   h1= title
   h2 Fallzahlen
   div(class="wrapper--graph")
-    select(id="noanimated--country--list")
-      - english_name = [ 'Austria', 'Germany', 'Italy', 'Hungary']
-      - german_name = [ 'Österreich', 'Deutschland', 'Italien', 'Ungarn']
-      each item, i in english_name
-        option(class="country" value=item) #{german_name[i]}
-    //- div(class="country--list")
-    //-   p(class="country" name="World") Weltweit
-    //-   p(class="country" name="Austria") Österreich
-    //-   p(class="country" name="Germany") Deutschland
-    //-   p(class="country" name="USA") USA
-    //-   p(class="country" name="Russia") Russland
-    //-   p(class="country" name="Netherlands") Niederlande
-    canvas(id="coronaBarChart" width="400" height="400")
-    svg(class="scroll--down")
-      path(class="a1" d="M0 0 L30 32 L60 0")
-      path(class="a2" d="M0 20 L30 52 L60 20")
-      path(class="a3" d="M0 40 L30 72 L60 40")
-    select(id="noanimated--country--list--pie")
-      - english_name = [ 'Austria', 'Germany', 'Italy', 'Hungary']
-      - german_name = [ 'Österreich', 'Deutschland', 'Italien', 'Ungarn']
-      each item, i in english_name
-        option(class="country" value=item) #{german_name[i]}
-    canvas(id="coronaPieChart")
+    div(class="wrapper--inner")
+      select(id="noanimated--country--list")
+        - english_name = [ 'Austria', 'Germany', 'Italy', 'Hungary']
+        - german_name = [ 'Österreich', 'Deutschland', 'Italien', 'Ungarn']
+        each item, i in english_name
+          option(class="country" value=item) #{german_name[i]}
+      //- div(class="country--list")
+      //-   p(class="country" name="World") Weltweit
+      //-   p(class="country" name="Austria") Österreich
+      //-   p(class="country" name="Germany") Deutschland
+      //-   p(class="country" name="USA") USA
+      //-   p(class="country" name="Russia") Russland
+      //-   p(class="country" name="Netherlands") Niederlande
+      canvas(id="coronaBarChart" width="400" height="400")
+      svg(class="scroll--down")
+        path(class="a1" d="M0 0 L30 32 L60 0")
+        path(class="a2" d="M0 20 L30 52 L60 20")
+        path(class="a3" d="M0 40 L30 72 L60 40")
+    div(class="wrapper--inner2")
+      select(id="noanimated--country--list--pie")
+        - english_name = [ 'Austria', 'Germany', 'Italy', 'Hungary']
+        - german_name = [ 'Österreich', 'Deutschland', 'Italien', 'Ungarn']
+        each item, i in english_name
+          option(class="country" value=item) #{german_name[i]}
+      canvas(id="coronaPieChart")
+      svg(class="scroll--down")
+        path(class="a1" d="M0 0 L30 32 L60 0")
+        path(class="a2" d="M0 20 L30 52 L60 20")
+        path(class="a3" d="M0 40 L30 72 L60 40")
+    div(class="wrapper--inner3")
+      canvas(id="coronaStackedChart")
+      a(href="/" class="back_to_index") Zurück zur Übersicht
 

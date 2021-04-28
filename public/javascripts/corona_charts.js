@@ -206,11 +206,15 @@ var myPieChart = new Chart(ctx_pie, {
     },
 });
 
-document.getElementById("country--list--pie").addEventListener("change", function(e) {
-    let selected = this.options[this.selectedIndex].value;
+myPieChart.reset();
 
-    updateData(myPieChart, selected, "pie");
-});
+document
+    .getElementById("country--list--pie")
+    .addEventListener("change", function(e) {
+        let selected = this.options[this.selectedIndex].value;
+
+        updateData(myPieChart, selected, "pie");
+    });
 
 // STACKED BAR CHART
 
@@ -223,6 +227,10 @@ console.log("DATA HUNGARY: ", corona_data_hungary);
 
 $(window).scroll(function() {
     var scroll = $(window).scrollTop();
+    if (scroll == 1 * $(window).height()) {
+        myPieChart.update();
+        console.log("trigger reset");
+    }
     if (scroll == 2 * $(window).height()) {
         var myStackedChart = new Chart(ctx_stacked, {
             type: "bar",
