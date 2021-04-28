@@ -18,7 +18,7 @@ req.end(function(res) {
 
     countries_temp = res.body;
     countries_temp.forEach(country => {
-        if (country["translations"]["de"] != null || country["translations"]["de"] != 'Österreich') {
+        if (country["translations"]["de"] != null && country["translations"]["de"] != "Österreich") {
             countries.push(country["translations"]["de"])
         }
     });
