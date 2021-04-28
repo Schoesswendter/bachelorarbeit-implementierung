@@ -6,7 +6,7 @@ block content
   form(method="GET", action="/form", class="form-filled")
     fieldset 
       label(for="sex") Geschlecht: *
-      select(id="sex", name="sex", required)
+      select(class="sex", name="sex", required)
         -sexs = ["Auswählen...", "Männlich", "Weiblich", "Divers"]
         - each sex, i in sexs
           - if (sex == "Auswählen...")
@@ -33,7 +33,7 @@ block content
       input(type="text", name="number", placeholder="Handynummer...", required)
     fieldset 
       label(for="countries") Land: *
-      select(id="countries", name="countries", required)
+      select(class="countries", name="countries", required)
         - each country, i in countries
           option(value="#{country}") #{country}  
     fieldset
