@@ -238,6 +238,35 @@ body.error .form-animated .enabled select {
     border: none;
 }
 
+.form-filled {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.form-filled label {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-filled fieldset {
+    border: none;
+    padding: 20px 50px;
+}
+
+.form-filled input {
+    width: calc(100% - 22px);
+}
+
+.form-filled select {
+    width: 100%;
+}
+
+.form-filled input[type="submit"] {
+    width: auto;
+}
+
 
 /* ANIMATION */
 

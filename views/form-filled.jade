@@ -1,0 +1,51 @@
+extends layout
+
+block content
+  h1 Vormerkung zur COVID-19 Schutzimpfung
+  h2 Persönliche Daten
+  form(method="GET", action="/form", class="form-filled")
+    fieldset 
+      label(for="sex") Geschlecht: *
+      select(id="sex", name="sex", required)
+        -sexs = ["Auswählen...", "Männlich", "Weiblich", "Divers"]
+        - each sex, i in sexs
+          - if (sex == "Auswählen...")
+            option(value="" disabled selected) Auswählen...
+          - else
+            option(value="#{sex}") #{sex}
+    fieldset   
+      label(for="lastname") Nachname: *
+      input(type="text", name="lastname", placeholder="Nachname...", required)
+    fieldset 
+      label(for="firstname") Vorname: *
+      input(type="text", name="firstname", placeholder="Vorname...", required)
+    fieldset 
+      label(for="sozialnummer") Sozialversicherungsnummer: *
+      input(type="text", name="sozialnummer" placeholder="10-stellige österr. Sozialversicherungsnummer...", required)
+    fieldset
+      label(for="age") Geburtsdatum: *
+      input(type="date", name="age", required)
+    fieldset
+      label(for="email") E-Mail Adresse: *
+      input(type="email", name="email", placeholder="E-Mail Adresse...", required)
+    fieldset 
+      label(for="number") Handynummer: *
+      input(type="text", name="number", placeholder="Handynummer...", required)
+    fieldset 
+      label(for="countries") Land: *
+      select(id="countries", name="countries", required)
+        - each country, i in countries
+          option(value="#{country}") #{country}  
+    fieldset
+      label(for="plz") PLZ: *
+      input(type="text", name="plz", placeholder="PLZ...", required)
+    fieldset
+      label(for="ort") Ort: *
+      input(type="text", name="ort", placeholder="Ort", required)
+    fieldset 
+      label(for="street") Straße: *
+      input(type="text", name="street", placeholder="Straße...", required)
+    fieldset 
+      label(for="housenumber") Hausnummer: *
+      input(type="text", name="housenumber", placeholder="Hausnummer...", required)
+    input(type="submit")

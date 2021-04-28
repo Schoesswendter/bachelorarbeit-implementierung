@@ -11,14 +11,14 @@ req.headers({
     "useQueryString": true
 });
 
-var countries = ['Österreich'];
+var countries = [];
 
 req.end(function(res) {
     if (res.error) throw new Error(res.error);
 
     countries_temp = res.body;
     countries_temp.forEach(country => {
-        if (country["translations"]["de"] != null || country["translations"]["de"] != 'Österreich') {
+        if (country["translations"]["de"] != null) {
             countries.push(country["translations"]["de"])
         }
     });
@@ -26,7 +26,7 @@ req.end(function(res) {
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-    res.render('form-animated', { title: 'Bachelorarbeit - Schoesswendter', countries: countries });
+    res.render('form-filled', { title: 'Bachelorarbeit - Schoesswendter', countries: countries });
 });
 
 module.exports = router;
