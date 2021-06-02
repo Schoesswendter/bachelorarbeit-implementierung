@@ -195,6 +195,7 @@ var myPieChart = new Chart(ctx_pie, {
         },
         animation: {
             duration: 7000,
+
         },
         legend: {
             display: true,
@@ -255,7 +256,7 @@ $(window).scroll(function() {
                 ],
                 datasets: [{
                         type: "bar",
-                        label: "Fälle pro 1 Millionen",
+                        label: "Fälle pro 1 Millionen Einwohner",
                         data: [
                             corona_data["casesPerOneMillion"],
                             corona_data_germany["casesPerOneMillion"],

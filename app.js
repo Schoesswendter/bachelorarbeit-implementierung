@@ -25,10 +25,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/form', formRouter);
-app.use('/form-animated', formAnimatedRouter);
+app.use('/form-v2', formAnimatedRouter);
 app.use('/form-filled', formFilledRouter);
 app.use('/graph', graphRouter);
-app.use('/graph-notanimated', graph2Router);
+app.use('/graph-v2', graph2Router);
 
 app.set('title', 'Bachelorarbeit - Michaela Schoesswendter')
 

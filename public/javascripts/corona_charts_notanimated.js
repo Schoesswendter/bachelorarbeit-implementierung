@@ -180,7 +180,7 @@ var myStackedChart = new Chart(ctx_stacked_no, {
         ],
         datasets: [{
                 type: "bar",
-                label: "Fälle pro 1 Millionen",
+                label: "Fälle pro 1 Millionen Einwohner",
                 data: [
                     corona_data["casesPerOneMillion"],
                     corona_data_germany["casesPerOneMillion"],
