@@ -228,11 +228,11 @@ console.log("DATA HUNGARY: ", corona_data_hungary);
 
 $(window).scroll(function() {
     var scroll = $(window).scrollTop();
-    if (scroll == 1 * $(window).height()) {
+    if (scroll >= 1 * $(window).height()) {
         myPieChart.update();
         console.log("trigger reset");
     }
-    if (scroll == 2 * $(window).height()) {
+    if (scroll >= 2 * $(window).height()) {
         var myStackedChart = new Chart(ctx_stacked, {
             type: "bar",
             data: {

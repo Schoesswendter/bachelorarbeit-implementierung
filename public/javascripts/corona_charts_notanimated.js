@@ -60,7 +60,7 @@ var coronaBarChart = new Chart(ctx_bar_no, {
                 ticks: {
                     beginAtZero: true,
                     // max: 4000000,
-                    fontSize: 16,
+                    fontSize: 18,
                     fontColor: 'black',
                     callback: function(value, index, values) {
                             return numberWithCommas(value);
@@ -70,7 +70,7 @@ var coronaBarChart = new Chart(ctx_bar_no, {
             }],
             xAxes: [{
                 ticks: {
-                    fontSize: 16,
+                    fontSize: 18,
                     fontColor: 'black'
                 }
             }]
