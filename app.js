@@ -10,6 +10,7 @@ var formFilledRouter = require('./routes/form-filled');
 var formAnimatedRouter = require('./routes/form-animated');
 var graphRouter = require('./routes/graph');
 var graph2Router = require('./routes/graph-notanimated');
+var einwilligungRouter = require('./routes/einwilligung');
 
 var app = express();
 
@@ -29,6 +30,7 @@ app.use('/form-v2', formAnimatedRouter);
 app.use('/form-filled', formFilledRouter);
 app.use('/graph', graphRouter);
 app.use('/graph-v2', graph2Router);
+app.use('/einwilligung', einwilligungRouter);
 
 app.set('title', 'Bachelorarbeit - Michaela Schoesswendter')
 
