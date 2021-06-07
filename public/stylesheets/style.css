@@ -52,6 +52,68 @@ a {
     border-radius: 7px;
 }
 
+#consent {
+    min-height: 0;
+}
+
+.basic--link {
+    background: none;
+    color: #2961b6;
+    font: 18px "Lucida Grande", Helvetica, Arial, sans-serif;
+    width: auto;
+    margin: 0;
+    padding: 0;
+    text-transform: none;
+    display: inherit;
+    letter-spacing: normal;
+    text-decoration: underline;
+}
+
+.curtain.show {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: fixed;
+    background: rgba(0,0,0,0.5);
+    pointer-events: none;
+}
+
+.consent.show {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 50px;
+    width: 50%;
+    max-width: 500px;
+    text-align: justify;
+}
+
+.consent.disabled {
+    display: none;
+}
+
+#accept_consent {
+    background-color: #081b37;
+    color: white;
+    text-decoration: none;
+    padding: 16px;
+    margin-top: 50px;
+    display: inline-block;
+    width: 100%;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 0.1em;
+    font-size: 18px;
+    border-radius: 7px;
+}
+
+#accept_consent:disabled,
+#accept_consent[disabled] {
+    background-color: gray;
+}
 
 /* GRAPH */
 

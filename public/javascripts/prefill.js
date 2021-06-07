@@ -11,7 +11,7 @@ function FillForm() {
         var param = list[i].split('=')[0]
         var value = list[i].split('=')[1]
 
-        value = decodeURIComponent(value)
+        value = decodeURIComponent(value.replace(/\+/g, ' '))
 
         document.getElementsByName(param)[0].value = value;
     }
