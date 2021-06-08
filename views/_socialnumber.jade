@@ -1,6 +1,6 @@
 fieldset 
   label(for="sozialnummer") Sozialversicherungsnummer: *
-  input(type="text", name="sozialnummer" placeholder="10-stellige österr. Sozialversicherungsnummer...", required)
+  input(type="text", name="sozialnummer" placeholder="10-stellige österr. Sozialversicherungsnummer...", required onkeypress="return isNumberKey(event)")
   div(class="navigation")
     button(class="back" type="button") Zurück 
     button(class="next" type="button") Weiter 

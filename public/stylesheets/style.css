@@ -108,11 +108,13 @@ a {
     letter-spacing: 0.1em;
     font-size: 18px;
     border-radius: 7px;
+    cursor: pointer;
 }
 
 #accept_consent:disabled,
 #accept_consent[disabled] {
     background-color: gray;
+    cursor: inherit; 
 }
 
 /* GRAPH */

@@ -1,6 +1,6 @@
 fieldset 
   label(for="number") Handynummer: *
-  input(type="text", name="number", placeholder="Handynummer...", required)
+  input(type="text", name="number", placeholder="Handynummer...", required, onkeypress="return isNumberKey(event)")
   div(class="navigation")
     button(class="back" type="button") Zurück 
     button(class="next" type="button") Weiter 

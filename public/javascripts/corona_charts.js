@@ -136,7 +136,7 @@ var myChart = new Chart(ctx, {
             yAxes: [{
                 ticks: {
                     beginAtZero: true,
-                    // max: 4000000,
+                    max: 4500000,
                     fontSize: 16,
                     fontColor: "black",
                     callback: function(value, index, values) {
@@ -166,7 +166,7 @@ document
 var ctx_pie = document.getElementById("myPieChart");
 
 var myPieChart = new Chart(ctx_pie, {
-    type: "pie",
+    type: "doughnut",
     data: {
         labels: [
             [recovered + " Geheilte Fälle"],
@@ -204,6 +204,7 @@ var myPieChart = new Chart(ctx_pie, {
                 fontSize: 18,
             },
         },
+        
     },
 });
 
