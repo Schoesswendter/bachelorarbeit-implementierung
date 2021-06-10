@@ -6,8 +6,8 @@ block content
   div(class="wrapper--graph")
     div(class="wrapper--inner")
       select(id="country--list")
-        - english_name = [ 'Austria', 'Hungary','Germany', 'Italy']
-        - german_name = [ 'Österreich', 'Ungarn', 'Deutschland', 'Italien']
+        - english_name = [ 'Italy', 'Hungary','Germany', 'Austria']
+        - german_name = [ 'Italien', 'Ungarn', 'Deutschland', 'Österreich']
         each item, i in english_name
           option(class="country" value=item) #{german_name[i]}
       //- div(class="country--list")

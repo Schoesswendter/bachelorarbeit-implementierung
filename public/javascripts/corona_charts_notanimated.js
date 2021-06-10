@@ -4,6 +4,38 @@ var select_countries = document.getElementsByClassName("country")
 
 var corona_data = {}
 
+var corona_data_italy = {};
+var corona_data_hungary = {};
+var corona_data_germany = {};
+
+await fetch(`https://coronavirus-19-api.herokuapp.com/countries/Germany`)
+    .then((resp) => resp.json())
+    .then(function(data) {
+        corona_data_germany = data;
+    })
+    .catch(function(error) {
+        console.log(error);
+    });
+
+await fetch(`https://coronavirus-19-api.herokuapp.com/countries/Hungary`)
+    .then((resp) => resp.json())
+    .then(function(data) {
+        corona_data_hungary = data;
+    })
+    .catch(function(error) {
+        console.log(error);
+    });
+
+await fetch(`https://coronavirus-19-api.herokuapp.com/countries/Italy`)
+    .then((resp) => resp.json())
+    .then(function(data) {
+        corona_data_italy = data;
+    })
+    .catch(function(error) {
+        console.log(error);
+    });
+
+
 await fetch(`https://coronavirus-19-api.herokuapp.com/countries/${country}`)
     .then((resp) => resp.json())
     .then(function(data) {
@@ -16,10 +48,10 @@ await fetch(`https://coronavirus-19-api.herokuapp.com/countries/${country}`)
 // NOT ANIMATED
 var ctx_bar_no = document.getElementById('coronaBarChart');
 
-let cases = numberWithCommas(corona_data["cases"]);
-let active = numberWithCommas(corona_data["active"]);
-let deaths = numberWithCommas(corona_data["deaths"]);
-let recovered = numberWithCommas(corona_data["recovered"]);
+let cases = numberWithCommas(corona_data_italy["cases"]);
+let active = numberWithCommas(corona_data_italy["active"]);
+let deaths = numberWithCommas(corona_data_italy["deaths"]);
+let recovered = numberWithCommas(corona_data_italy["recovered"]);
 
 var coronaBarChart = new Chart(ctx_bar_no, {
     type: 'bar',
@@ -32,7 +64,7 @@ var coronaBarChart = new Chart(ctx_bar_no, {
         ],
         datasets: [{
             label: 'Personen',
-            data: [corona_data["cases"], corona_data["active"], corona_data["deaths"], corona_data["recovered"]],
+            data: [corona_data_italy["cases"], corona_data_italy["active"], corona_data_italy["deaths"], corona_data_italy["recovered"]],
             backgroundColor: [
                 'rgba(54, 162, 235, 0.9)',
                 'rgba(255, 206, 86, 0.9)',
@@ -59,13 +91,13 @@ var coronaBarChart = new Chart(ctx_bar_no, {
             yAxes: [{
                 ticks: {
                     beginAtZero: true,
-                    // max: 4000000,
+                    max: 4500000,
                     fontSize: 18,
                     fontColor: 'black',
                     callback: function(value, index, values) {
                             return numberWithCommas(value);
                         }
-                        // stepSize: 1000000
+                        // stepSize: 1000000,
                 }
             }],
             xAxes: [{
@@ -124,36 +156,6 @@ document.getElementById("noanimated--country--list--pie").addEventListener("chan
     updateData(myPieChart_no, selected, 'pie')
 })
 
-var corona_data_italy = {};
-var corona_data_hungary = {};
-var corona_data_germany = {};
-
-await fetch(`https://coronavirus-19-api.herokuapp.com/countries/Germany`)
-    .then((resp) => resp.json())
-    .then(function(data) {
-        corona_data_germany = data;
-    })
-    .catch(function(error) {
-        console.log(error);
-    });
-
-await fetch(`https://coronavirus-19-api.herokuapp.com/countries/Hungary`)
-    .then((resp) => resp.json())
-    .then(function(data) {
-        corona_data_hungary = data;
-    })
-    .catch(function(error) {
-        console.log(error);
-    });
-
-await fetch(`https://coronavirus-19-api.herokuapp.com/countries/Italy`)
-    .then((resp) => resp.json())
-    .then(function(data) {
-        corona_data_italy = data;
-    })
-    .catch(function(error) {
-        console.log(error);
-    });
 
 var ctx_stacked_no = document.getElementById("coronaStackedChart");
 

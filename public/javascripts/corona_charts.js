@@ -66,10 +66,10 @@ await fetch(`https://coronavirus-19-api.herokuapp.com/countries/Italy`)
 
 var ctx = document.getElementById("myChart");
 
-let cases = numberWithCommas(corona_data["cases"]);
-let active = numberWithCommas(corona_data["active"]);
-let deaths = numberWithCommas(corona_data["deaths"]);
-let recovered = numberWithCommas(corona_data["recovered"]);
+let cases = numberWithCommas(corona_data_italy["cases"]);
+let active = numberWithCommas(corona_data_italy["active"]);
+let deaths = numberWithCommas(corona_data_italy["deaths"]);
+let recovered = numberWithCommas(corona_data_italy["recovered"]);
 
 var myChart = new Chart(ctx, {
     type: "bar",
@@ -83,10 +83,10 @@ var myChart = new Chart(ctx, {
         datasets: [{
             label: "Personen",
             data: [
-                corona_data["cases"],
-                corona_data["active"],
-                corona_data["deaths"],
-                corona_data["recovered"],
+                corona_data_italy["cases"],
+                corona_data_italy["active"],
+                corona_data_italy["deaths"],
+                corona_data_italy["recovered"],
             ],
             backgroundColor: [
                 "rgba(54, 162, 235, 0.9)",
