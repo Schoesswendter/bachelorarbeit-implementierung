@@ -73,6 +73,6 @@ window.onload = function () {
       if (target.classList.contains("next")) next(target);
       if (target.classList.contains("back")) back(target);
     };
-    document.addEventListener("keydown", keyDown, false);
+    // document.addEventListener("keyup", keyDown, false);
   }
 }

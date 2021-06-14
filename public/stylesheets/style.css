@@ -296,7 +296,7 @@ ul.items {
 body.error .form-animated .enabled input,
 body.error .form-animated .enabled select {
     animation-name: shake;
-    animation-duration: 0.5s;
+    animation-duration: 1s;
     animation-timing-function: linear;
     box-shadow: 0px 0px 1px 2px #B70E0C;
     border: none;
