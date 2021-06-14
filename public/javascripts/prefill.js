@@ -17,6 +17,22 @@ function FillForm() {
     }
 }
 
+function FillDate() {
+    let todays = document.querySelectorAll(".today")
+
+    todays.forEach(element => {
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+
+        today = dd + '.' + mm + '.' + yyyy;
+        element.innerHTML = today;
+    });
+
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     FillForm();
+    FillDate();
 })

@@ -137,7 +137,7 @@ var myChart = new Chart(ctx, {
                 ticks: {
                     beginAtZero: true,
                     max: 4500000,
-                    fontSize: 16,
+                    fontSize: 18,
                     fontColor: "black",
                     callback: function(value, index, values) {
                         return numberWithCommas(value);
@@ -147,7 +147,7 @@ var myChart = new Chart(ctx, {
             }, ],
             xAxes: [{
                 ticks: {
-                    fontSize: 16,
+                    fontSize: 18,
                     fontColor: "black",
                 },
             }, ],
@@ -155,12 +155,15 @@ var myChart = new Chart(ctx, {
     },
 });
 
+document.getElementById('description').innerHTML = `In Italien sind derzeit ${active} aktive Fälle.`
+
 document
     .getElementById("country--list")
     .addEventListener("change", function(e) {
         let selected = this.options[this.selectedIndex].value;
+        let german_selected = this.options[this.selectedIndex].innerHTML
 
-        updateData(myChart, selected);
+        updateData(myChart, selected, 'bar', german_selected)
     });
 
 var ctx_pie = document.getElementById("myPieChart");
@@ -316,7 +319,7 @@ $(window).scroll(function() {
     }
 });
 
-async function updateData(chart, selected, chart_type = "bar") {
+async function updateData(chart, selected, chart_type = "bar", german_selected = 'Österreich') {
     let new_data = {};
 
     await fetch(`https://coronavirus-19-api.herokuapp.com/countries/${selected}`)
@@ -343,6 +346,8 @@ async function updateData(chart, selected, chart_type = "bar") {
         chart.data.labels[1] = [active, " Aktive Fälle"];
         chart.data.labels[2] = [deaths, " Todesfälle"];
         chart.data.labels[3] = [recovered, " Geheilte Fälle"];
+
+        document.getElementById('description').innerHTML = `In ${german_selected} sind derzeit ${active} aktive Fälle.`
     } else {
         chart.data.datasets[0].data[0] = new_data["recovered"];
         chart.data.datasets[0].data[1] = new_data["active"];

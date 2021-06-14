@@ -147,6 +147,13 @@ a {
     left: 58px;
 }
 
+#description_v2, #description {
+    position: absolute;
+    top: 80vh;
+    width: 100%;
+    text-align: center;
+}
+
 #myChart,
 #myPieChart,
 #coronaBarChart,

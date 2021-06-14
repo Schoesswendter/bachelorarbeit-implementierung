@@ -2,7 +2,8 @@ extends layout
 
 block content
   h1= title
-  h2 Fallzahlen bis 10.06.2021
+  h2 Fallzahlen bis 
+    div(class="today") 
   div(class="wrapper--graph")
     div(class="wrapper--inner")
       select(id="noanimated--country--list")
@@ -18,6 +19,7 @@ block content
       //-   p(class="country" name="Russia") Russland
       //-   p(class="country" name="Netherlands") Niederlande
       canvas(id="coronaBarChart")
+      p(id="description_v2")
       svg(class="scroll--down")
         path(class="a1" d="M0 0 L30 32 L60 0")
         path(class="a2" d="M0 20 L30 52 L60 20")

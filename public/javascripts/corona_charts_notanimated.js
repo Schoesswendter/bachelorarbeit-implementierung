@@ -10,38 +10,38 @@ var corona_data_germany = {};
 
 await fetch(`https://coronavirus-19-api.herokuapp.com/countries/Germany`)
     .then((resp) => resp.json())
-    .then(function(data) {
+    .then(function (data) {
         corona_data_germany = data;
     })
-    .catch(function(error) {
+    .catch(function (error) {
         console.log(error);
     });
 
 await fetch(`https://coronavirus-19-api.herokuapp.com/countries/Hungary`)
     .then((resp) => resp.json())
-    .then(function(data) {
+    .then(function (data) {
         corona_data_hungary = data;
     })
-    .catch(function(error) {
+    .catch(function (error) {
         console.log(error);
     });
 
 await fetch(`https://coronavirus-19-api.herokuapp.com/countries/Italy`)
     .then((resp) => resp.json())
-    .then(function(data) {
+    .then(function (data) {
         corona_data_italy = data;
     })
-    .catch(function(error) {
+    .catch(function (error) {
         console.log(error);
     });
 
 
 await fetch(`https://coronavirus-19-api.herokuapp.com/countries/${country}`)
     .then((resp) => resp.json())
-    .then(function(data) {
+    .then(function (data) {
         corona_data = data
     })
-    .catch(function(error) {
+    .catch(function (error) {
         console.log(error);
     });
 
@@ -74,7 +74,7 @@ var coronaBarChart = new Chart(ctx_bar_no, {
         }]
     },
     options: {
-        scaleLabel: function(label) { return '$' + label.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); },
+        scaleLabel: function (label) { return '$' + label.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); },
         legend: {
             display: false
         },
@@ -85,7 +85,7 @@ var coronaBarChart = new Chart(ctx_bar_no, {
             duration: 0
         },
         tooltips: {
-            enabled: false
+            enabled: true
         },
         scales: {
             yAxes: [{
@@ -94,10 +94,10 @@ var coronaBarChart = new Chart(ctx_bar_no, {
                     max: 4500000,
                     fontSize: 18,
                     fontColor: 'black',
-                    callback: function(value, index, values) {
-                            return numberWithCommas(value);
-                        }
-                        // stepSize: 1000000,
+                    callback: function (value, index, values) {
+                        return numberWithCommas(value);
+                    }
+                    // stepSize: 1000000,
                 }
             }],
             xAxes: [{
@@ -110,10 +110,13 @@ var coronaBarChart = new Chart(ctx_bar_no, {
     }
 });
 
-document.getElementById("noanimated--country--list").addEventListener("change", function(e) {
-    let selected = this.options[this.selectedIndex].value
+document.getElementById('description_v2').innerHTML = `In Italien sind derzeit ${active} aktive Fälle.`
 
-    updateData(coronaBarChart, selected)
+document.getElementById("noanimated--country--list").addEventListener("change", function (e) {
+    let selected = this.options[this.selectedIndex].value
+    let german_selected = this.options[this.selectedIndex].innerHTML
+
+    updateData(coronaBarChart, selected, 'bar', german_selected)
 })
 
 var ctx_pie_no = document.getElementById('coronaPieChart');
@@ -140,6 +143,9 @@ var myPieChart_no = new Chart(ctx_pie_no, {
         animation: {
             duration: 0,
         },
+        tooltips: {
+            enabled: true
+        },
         legend: {
             display: true,
             labels: {
@@ -150,7 +156,7 @@ var myPieChart_no = new Chart(ctx_pie_no, {
     }
 });
 
-document.getElementById("noanimated--country--list--pie").addEventListener("change", function(e) {
+document.getElementById("noanimated--country--list--pie").addEventListener("change", function (e) {
     let selected = this.options[this.selectedIndex].value
 
     updateData(myPieChart_no, selected, 'pie')
@@ -181,16 +187,16 @@ var myStackedChart = new Chart(ctx_stacked_no, {
             ],
         ],
         datasets: [{
-                type: "bar",
-                label: "Fälle pro 1 Millionen Einwohner",
-                data: [
-                    corona_data["casesPerOneMillion"],
-                    corona_data_germany["casesPerOneMillion"],
-                    corona_data_italy["casesPerOneMillion"],
-                    corona_data_hungary["casesPerOneMillion"],
-                ],
-                backgroundColor: "rgba(54, 162, 235, 0.9)",
-            },
+            type: "bar",
+            label: "Fälle pro 1 Millionen Einwohner",
+            data: [
+                corona_data["casesPerOneMillion"],
+                corona_data_germany["casesPerOneMillion"],
+                corona_data_italy["casesPerOneMillion"],
+                corona_data_hungary["casesPerOneMillion"],
+            ],
+            backgroundColor: "rgba(54, 162, 235, 0.9)",
+        },
             // {
             //   type: 'line',
             //   label: 'Tests pro 1 Millionen',
@@ -214,7 +220,7 @@ var myStackedChart = new Chart(ctx_stacked_no, {
                     fontSize: 16,
                     fontColor: "black",
                 },
-            }, ],
+            },],
             yAxes: [{
                 stacked: true,
                 ticks: {
@@ -222,12 +228,12 @@ var myStackedChart = new Chart(ctx_stacked_no, {
                     // max: 4000000,
                     fontSize: 16,
                     fontColor: "black",
-                    callback: function(value, index, values) {
+                    callback: function (value, index, values) {
                         return numberWithCommas(value);
                     },
                     // stepSize: 1000000
                 },
-            }, ],
+            },],
         },
         legend: {
             display: true,
@@ -239,17 +245,23 @@ var myStackedChart = new Chart(ctx_stacked_no, {
     },
 });
 
-async function updateData(chart, selected, chart_type = 'bar') {
+async function updateData(chart, selected, chart_type = 'bar', german_selected = 'Österreich') {
     let new_data = {}
 
     await fetch(`https://coronavirus-19-api.herokuapp.com/countries/${selected}`)
         .then((resp) => resp.json())
-        .then(function(data) {
+        .then(function (data) {
             new_data = data
         })
-        .catch(function(error) {
+        .catch(function (error) {
             console.log(error);
         });
+
+    cases = numberWithCommas(new_data["cases"]);
+    active = numberWithCommas(new_data["active"]);
+    deaths = numberWithCommas(new_data["deaths"]);
+    recovered = numberWithCommas(new_data["recovered"]);
+
 
     if (chart_type == 'bar') {
         chart.data.datasets[0].data[0] = new_data["cases"]
@@ -261,6 +273,10 @@ async function updateData(chart, selected, chart_type = 'bar') {
         chart.data.labels[1] = [active, ' Aktive Fälle']
         chart.data.labels[2] = [deaths, ' Todesfälle']
         chart.data.labels[3] = [recovered, ' Geheilte Fälle']
+
+        console.log(new_data)
+
+        document.getElementById('description_v2').innerHTML = `In ${german_selected} sind derzeit ${active} aktive Fälle.`
     } else {
         chart.data.datasets[0].data[0] = new_data["recovered"]
         chart.data.datasets[0].data[1] = new_data["active"]
