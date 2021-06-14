@@ -155,7 +155,7 @@ var myChart = new Chart(ctx, {
     },
 });
 
-document.getElementById('description').innerHTML = `In Italien sind derzeit ${active} aktive Fälle.`
+document.getElementById('description').innerHTML = `In Italien sind derzeit ${cases} Fälle, davon ${active} aktiv, ${deaths} tod, ${active} geheilt.`
 
 document
     .getElementById("country--list")
@@ -347,7 +347,7 @@ async function updateData(chart, selected, chart_type = "bar", german_selected =
         chart.data.labels[2] = [deaths, " Todesfälle"];
         chart.data.labels[3] = [recovered, " Geheilte Fälle"];
 
-        document.getElementById('description').innerHTML = `In ${german_selected} sind derzeit ${active} aktive Fälle.`
+        document.getElementById('description').innerHTML = `In ${german_selected} sind derzeit ${cases} Fälle, davon ${active} aktiv, ${deaths} tod, ${active} geheilt.`
     } else {
         chart.data.datasets[0].data[0] = new_data["recovered"];
         chart.data.datasets[0].data[1] = new_data["active"];

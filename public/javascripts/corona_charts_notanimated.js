@@ -110,7 +110,7 @@ var coronaBarChart = new Chart(ctx_bar_no, {
     }
 });
 
-document.getElementById('description_v2').innerHTML = `In Italien sind derzeit ${active} aktive Fälle.`
+document.getElementById('description_v2').innerHTML = `In Italien sind derzeit ${cases} Fälle, davon ${active} aktiv, ${deaths} tod, ${active} geheilt.`
 
 document.getElementById("noanimated--country--list").addEventListener("change", function (e) {
     let selected = this.options[this.selectedIndex].value
@@ -275,8 +275,7 @@ async function updateData(chart, selected, chart_type = 'bar', german_selected =
         chart.data.labels[3] = [recovered, ' Geheilte Fälle']
 
         console.log(new_data)
-
-        document.getElementById('description_v2').innerHTML = `In ${german_selected} sind derzeit ${active} aktive Fälle.`
+        document.getElementById('description_v2').innerHTML = `In ${german_selected} sind derzeit ${cases} Fälle, davon ${active} aktiv, ${deaths} tod, ${active} geheilt.`
     } else {
         chart.data.datasets[0].data[0] = new_data["recovered"]
         chart.data.datasets[0].data[1] = new_data["active"]
