@@ -122,7 +122,7 @@ document.getElementById("noanimated--country--list").addEventListener("change", 
 var ctx_pie_no = document.getElementById('coronaPieChart');
 
 var myPieChart_no = new Chart(ctx_pie_no, {
-    type: 'pie',
+    type: 'doughnut',
     data: {
         labels: [
             [recovered + ' Geheilte Fälle'],
